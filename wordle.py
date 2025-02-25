@@ -6,10 +6,10 @@ class Wordle():
     
     global ALLOWED_GUESSES, word_list
     ALLOWED_GUESSES = 6
-    word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
+    word_list = yaml.load(open('r_wordlist.yaml'), Loader=yaml.FullLoader)
     
     # comment this out for development, use for testing / marking
-    # seed(18)
+    # seed(42)
 
     def __init__(self, random_state=None):
         self._word = choice(word_list)
