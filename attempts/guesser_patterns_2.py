@@ -7,11 +7,10 @@ from functools import lru_cache
 
 class Guesser:
     def __init__(self, manual):
-        # Use the revised wordlist (r_wordlist.yaml)
-        self.word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
+        self.word_list = yaml.load(open('r_wordlist.yaml'), Loader=yaml.FullLoader)
         self._manual = manual 
         self.console = Console()
-        self._tried = []  # Words already guessed this game
+        self._tried = []  # List of words already guessed in the current game
         self.candidates = self.word_list.copy()  # All words are initially candidates
         self.last_guess = None
         self.best_first_word = self.calculate_best_first_word()
@@ -23,7 +22,7 @@ class Guesser:
 
     @lru_cache(maxsize=1000000)
     def get_feedback(self, guess, answer):
-        """Calculate feedback pattern using memoization."""
+        """Calculate feedback pattern using memoization"""
         counts = Counter(answer)
         feedback = [''] * len(guess)
         
@@ -35,7 +34,7 @@ class Guesser:
             else:
                 feedback[i] = '+'
                 
-        # Second pass: mark letters that are present but misplaced
+        # Second pass: mark incorrect positions
         for i, letter in enumerate(guess):
             if feedback[i] == '+' and letter in answer and counts[letter] > 0:
                 feedback[i] = '-'
@@ -45,20 +44,22 @@ class Guesser:
     
     @lru_cache(maxsize=10000)
     def calculate_pattern_distribution(self, guess, candidates_tuple):
-        """Calculate pattern distribution for a given guess and candidate set."""
+        """Calculate pattern distribution for a given guess and candidate set"""
+        candidates = list(candidates_tuple)
         distribution = {}
-        for answer in candidates_tuple:
+        for answer in candidates:
             pattern = self.get_feedback(guess, answer)
             distribution[pattern] = distribution.get(pattern, 0) + 1
         return distribution
     
     def calculate_entropy(self, guess, candidates):
-        """Calculate entropy for a given guess against the candidate set."""
-        # Avoid converting repeatedly if already a tuple.
-        if not isinstance(candidates, tuple):
-            candidates = tuple(candidates)
+        """Calculate entropy for a given guess"""
         total_weight = len(candidates)
-        distribution = self.calculate_pattern_distribution(guess, candidates)
+        
+        # Convert list to tuple for caching
+        candidates_tuple = tuple(candidates)
+        distribution = self.calculate_pattern_distribution(guess, candidates_tuple)
+        
         entropy = 0
         for count in distribution.values():
             p = count / total_weight
@@ -66,20 +67,30 @@ class Guesser:
         return entropy
     
     def calculate_best_first_word(self):
-        """Calculate the optimal first word (even if non-dictionary) based on entropy over all answers."""
+        """Calculate the optimal first word based on entropy across all possible answers"""
+        
+        # Create all possible 5-letter strings with common letters
         candidates = self.word_list.copy()
         
-        # Known good starting words
-        potential_first_words = ['soare', 'roate', 'raise', 'raile', 'slate', 'crate', 'irate', 'trace']
-        #["saren", "ranes", "saret", "tares", "earis", "saner", "lares", "aires", "raise", "sarel"]
+        # Let's focus on common letters in English
+        letters = 'etaoinshrdlucmfwypvbgkjqxz'
         
-        # Add some random words from the wordlist for diversity.
+        # Generate a list of potential first words that cover common letters
+        # Include both valid words and strategic combinations of letters
+        potential_first_words = []
+        
+        # Add known good starting words
+        potential_first_words.extend(['soare', 'roate', 'raise', 'raile', 'slate', 'crate', 'irate', 'trace'])
+        
+        # Add some words from the wordlist
         sample_size = min(500, len(candidates))
         potential_first_words.extend(choice(candidates) for _ in range(sample_size))
         
-        # Also consider synthetic words that maximize letter diversity.
+        # For better coverage, also consider some non-dictionary words that maximize letter diversity
         vowels = 'aeiou'
         common_consonants = 'rstlnc'
+        
+        # Generate some synthetic words that have good letter combinations
         for v1 in vowels:
             for v2 in vowels:
                 if v1 != v2:
@@ -87,15 +98,18 @@ class Guesser:
                         for c2 in common_consonants:
                             if c1 != c2:
                                 for c3 in common_consonants:
-                                    if c3 not in (c1, c2):
-                                        potential_first_words.append(c1 + v1 + c2 + v2 + c3)
+                                    if c3 not in [c1, c2]:
+                                        word = c1 + v1 + c2 + v2 + c3
+                                        potential_first_words.append(word)
         
-        # Limit to a maximum of 1000 candidates.
+        # Limit the synthetic words to a reasonable number
         potential_first_words = potential_first_words[:1000]
         
+        # Calculate entropy for each potential first word
         best_word = None
         best_entropy = -1
-        # For performance, use the full candidate set for evaluation.
+        
+        # Consider only a subset of all candidates for performance
         candidate_sample = candidates
         
         for word in potential_first_words:
@@ -103,18 +117,22 @@ class Guesser:
             if entropy > best_entropy:
                 best_entropy = entropy
                 best_word = word
+        
         return best_word
     
     def get_guess(self, result):
         if self._manual == 'manual':
             return self.console.input('Your guess:\n')
         else:
-            # Update candidates based on feedback from the previous guess.
+            # Use feedback from previous guess to update candidates
             if self.last_guess is not None:
-                self.candidates = [word for word in self.candidates 
-                                   if self.get_feedback(self.last_guess, word) == result]
+                new_candidates = []
+                for word in self.candidates:
+                    if self.get_feedback(self.last_guess, word) == result:
+                        new_candidates.append(word)
+                self.candidates = new_candidates
             
-            # For the first guess, return the precomputed best first word.
+            # First guess optimization
             if not self._tried:
                 guess = self.best_first_word
                 self._tried.append(guess)
@@ -122,7 +140,7 @@ class Guesser:
                 self.last_guess = guess
                 return guess
             
-            # If only one candidate remains, return it.
+            # If only one candidate left, that must be the answer
             if len(self.candidates) == 1:
                 guess = self.candidates[0]
                 self._tried.append(guess)
@@ -130,22 +148,32 @@ class Guesser:
                 self.last_guess = guess
                 return guess
             
-            # If no candidates remain (should not happen), reset the candidate list.
+            # If no candidates left (which shouldn't happen), reset
             if not self.candidates:
                 self.candidates = [w for w in self.word_list if w not in self._tried]
             
-            # For subsequent guesses, select the candidate with the highest entropy.
+            # For subsequent guesses, find the word that maximizes information gain
+            best_entropy = -1
+            best_guess = None
+            
+            # Consider both actual words and already tried words for efficiency
             candidates_to_consider = [w for w in self.candidates if w not in self._tried]
+            
+            # If no valid candidates left, use any word
             if not candidates_to_consider:
                 candidates_to_consider = self.candidates
             
-            # Precompute the tuple version of candidates for efficiency.
-            candidates_tuple = tuple(self.candidates)
-            best_guess = max(candidates_to_consider, 
-                             key=lambda candidate: self.calculate_entropy(candidate, candidates_tuple))
+            # Calculate entropy for each candidate and choose the best one
+            for candidate in candidates_to_consider:
+                entropy = self.calculate_entropy(candidate, self.candidates)
+                if entropy > best_entropy:
+                    best_entropy = entropy
+                    best_guess = candidate
             
+            # Use the best guess found
             guess = best_guess
             self._tried.append(guess)
             self.console.print(guess)
             self.last_guess = guess
+            
             return guess

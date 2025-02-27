@@ -8,7 +8,7 @@ from functools import lru_cache
 class Guesser:
     def __init__(self, manual):
         # Use the revised wordlist (r_wordlist.yaml)
-        self.word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
+        self.word_list = yaml.load(open('r_wordlist.yaml'), Loader=yaml.FullLoader)
         self._manual = manual 
         self.console = Console()
         self._tried = []  # Words already guessed this game
@@ -71,7 +71,6 @@ class Guesser:
         
         # Known good starting words
         potential_first_words = ['soare', 'roate', 'raise', 'raile', 'slate', 'crate', 'irate', 'trace']
-        #["saren", "ranes", "saret", "tares", "earis", "saner", "lares", "aires", "raise", "sarel"]
         
         # Add some random words from the wordlist for diversity.
         sample_size = min(500, len(candidates))

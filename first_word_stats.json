@@ -1,0 +1,313 @@
+{
+  "words": {
+    "liner": {
+      "games": 3719,
+      "total_guesses": 11308,
+      "avg_guesses": 3.0406023124495833
+    },
+    "alton": {
+      "games": 2,
+      "total_guesses": 7,
+      "avg_guesses": 3.5
+    },
+    "colne": {
+      "games": 10,
+      "total_guesses": 25,
+      "avg_guesses": 2.5
+    },
+    "tired": {
+      "games": 3,
+      "total_guesses": 11,
+      "avg_guesses": 3.6666666666666665
+    },
+    "lucas": {
+      "games": 2,
+      "total_guesses": 7,
+      "avg_guesses": 3.5
+    },
+    "laden": {
+      "games": 5,
+      "total_guesses": 16,
+      "avg_guesses": 3.2
+    },
+    "edict": {
+      "games": 4,
+      "total_guesses": 13,
+      "avg_guesses": 3.25
+    },
+    "doran": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "scout": {
+      "games": 5,
+      "total_guesses": 14,
+      "avg_guesses": 2.8
+    },
+    "astor": {
+      "games": 8,
+      "total_guesses": 24,
+      "avg_guesses": 3.0
+    },
+    "snout": {
+      "games": 4,
+      "total_guesses": 12,
+      "avg_guesses": 3.0
+    },
+    "rosen": {
+      "games": 5,
+      "total_guesses": 14,
+      "avg_guesses": 2.8
+    },
+    "litre": {
+      "games": 3,
+      "total_guesses": 8,
+      "avg_guesses": 2.6666666666666665
+    },
+    "alice": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "ratio": {
+      "games": 6,
+      "total_guesses": 16,
+      "avg_guesses": 2.6666666666666665
+    },
+    "siena": {
+      "games": 4,
+      "total_guesses": 13,
+      "avg_guesses": 3.25
+    },
+    "dales": {
+      "games": 4,
+      "total_guesses": 14,
+      "avg_guesses": 3.5
+    },
+    "louis": {
+      "games": 8,
+      "total_guesses": 25,
+      "avg_guesses": 3.125
+    },
+    "duran": {
+      "games": 7,
+      "total_guesses": 23,
+      "avg_guesses": 3.2857142857142856
+    },
+    "desai": {
+      "games": 4,
+      "total_guesses": 13,
+      "avg_guesses": 3.25
+    },
+    "ernst": {
+      "games": 8,
+      "total_guesses": 23,
+      "avg_guesses": 2.875
+    },
+    "delia": {
+      "games": 1,
+      "total_guesses": 3,
+      "avg_guesses": 3.0
+    },
+    "snarl": {
+      "games": 2,
+      "total_guesses": 7,
+      "avg_guesses": 3.5
+    },
+    "eaton": {
+      "games": 7,
+      "total_guesses": 21,
+      "avg_guesses": 3.0
+    },
+    "senco": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "leads": {
+      "games": 3,
+      "total_guesses": 8,
+      "avg_guesses": 2.6666666666666665
+    },
+    "stead": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "ecusa": {
+      "games": 2,
+      "total_guesses": 6,
+      "avg_guesses": 3.0
+    },
+    "colts": {
+      "games": 3,
+      "total_guesses": 9,
+      "avg_guesses": 3.0
+    },
+    "andes": {
+      "games": 1,
+      "total_guesses": 3,
+      "avg_guesses": 3.0
+    },
+    "stare": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "saint": {
+      "games": 5,
+      "total_guesses": 16,
+      "avg_guesses": 3.2
+    },
+    "lurid": {
+      "games": 2,
+      "total_guesses": 7,
+      "avg_guesses": 3.5
+    },
+    "intel": {
+      "games": 4,
+      "total_guesses": 13,
+      "avg_guesses": 3.25
+    },
+    "sotic": {
+      "games": 3,
+      "total_guesses": 7,
+      "avg_guesses": 2.3333333333333335
+    },
+    "calne": {
+      "games": 6,
+      "total_guesses": 18,
+      "avg_guesses": 3.0
+    },
+    "lanes": {
+      "games": 4,
+      "total_guesses": 13,
+      "avg_guesses": 3.25
+    },
+    "toner": {
+      "games": 5,
+      "total_guesses": 15,
+      "avg_guesses": 3.0
+    },
+    "sonar": {
+      "games": 2,
+      "total_guesses": 5,
+      "avg_guesses": 2.5
+    },
+    "ulead": {
+      "games": 6,
+      "total_guesses": 20,
+      "avg_guesses": 3.3333333333333335
+    },
+    "cited": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "route": {
+      "games": 3,
+      "total_guesses": 9,
+      "avg_guesses": 3.0
+    },
+    "codes": {
+      "games": 3,
+      "total_guesses": 8,
+      "avg_guesses": 2.6666666666666665
+    },
+    "antic": {
+      "games": 2,
+      "total_guesses": 5,
+      "avg_guesses": 2.5
+    },
+    "coral": {
+      "games": 3,
+      "total_guesses": 9,
+      "avg_guesses": 3.0
+    },
+    "diner": {
+      "games": 4,
+      "total_guesses": 12,
+      "avg_guesses": 3.0
+    },
+    "altis": {
+      "games": 3,
+      "total_guesses": 10,
+      "avg_guesses": 3.3333333333333335
+    },
+    "olden": {
+      "games": 3,
+      "total_guesses": 11,
+      "avg_guesses": 3.6666666666666665
+    },
+    "trine": {
+      "games": 1,
+      "total_guesses": 3,
+      "avg_guesses": 3.0
+    },
+    "loire": {
+      "games": 1,
+      "total_guesses": 3,
+      "avg_guesses": 3.0
+    },
+    "lance": {
+      "games": 1,
+      "total_guesses": 2,
+      "avg_guesses": 2.0
+    },
+    "leica": {
+      "games": 1,
+      "total_guesses": 2,
+      "avg_guesses": 2.0
+    },
+    "dates": {
+      "games": 3,
+      "total_guesses": 8,
+      "avg_guesses": 2.6666666666666665
+    },
+    "adult": {
+      "games": 2,
+      "total_guesses": 6,
+      "avg_guesses": 3.0
+    },
+    "seton": {
+      "games": 3,
+      "total_guesses": 11,
+      "avg_guesses": 3.6666666666666665
+    },
+    "nurse": {
+      "games": 2,
+      "total_guesses": 6,
+      "avg_guesses": 3.0
+    },
+    "cline": {
+      "games": 3,
+      "total_guesses": 8,
+      "avg_guesses": 2.6666666666666665
+    },
+    "ulcer": {
+      "games": 1,
+      "total_guesses": 3,
+      "avg_guesses": 3.0
+    },
+    "slate": {
+      "games": 19,
+      "total_guesses": 55,
+      "avg_guesses": 2.8947368421052633
+    },
+    "aires": {
+      "games": 15,
+      "total_guesses": 45,
+      "avg_guesses": 3.0
+    },
+    "tales": {
+      "games": 12,
+      "total_guesses": 36,
+      "avg_guesses": 3.0
+    }
+  },
+  "total_games": 3970,
+  "best_word": "liner",
+  "best_avg": 2.0,
+  "exploration_rate": 0.05
+}

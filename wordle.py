@@ -6,7 +6,7 @@ class Wordle():
     
     global ALLOWED_GUESSES, word_list
     ALLOWED_GUESSES = 6
-    word_list = yaml.load(open('r_wordlist.yaml'), Loader=yaml.FullLoader)
+    word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
     
     # comment this out for development, use for testing / marking
     # seed(42)

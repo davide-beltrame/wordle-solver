@@ -21,7 +21,7 @@ N_INIT, N_WORDS, N_GAMES = int(N_INIT), int(N_WORDS), 500
 
 #input('Press enter to start: ')
 
-_word_list = yaml.load(open('wordlist.yaml'), Loader=yaml.FullLoader)
+_word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
 
 stats = np.zeros(shape=(N_INIT, 3))
 
