@@ -9,7 +9,7 @@ class Wordle():
     word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
     
     # comment this out for development, use for testing / marking
-    # seed(42)
+    seed(42)
 
     def __init__(self, random_state=None):
         self._word = choice(word_list)

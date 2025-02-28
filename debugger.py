@@ -9,7 +9,7 @@ import itertools
 from string import ascii_lowercase
 
 class WordleDebugger:
-    def __init__(self, wordlist_path='wordlist.yaml'):
+    def __init__(self, wordlist_path='dev_wordlist.yaml'):
         self.word_list = yaml.load(open(wordlist_path), Loader=yaml.FullLoader)
         self.total_words = len(self.word_list)
         # Extract letter frequency information
