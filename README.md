@@ -38,7 +38,7 @@ The **guesser_general.py** file has been so far tested only for the current conf
 
 ## How to Run
 
-1. Install dependencies (e.g., `pip install -r requirements.txt` if provided, or ensure you have `yaml`, `rich`, and `numpy`).
+1. Install dependencies (ensure you have `yaml`, `rich`, and `numpy`).
 2. From the command line, navigate to this repository’s folder.
 3. Run:
    ```bash
