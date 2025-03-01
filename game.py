@@ -1,5 +1,5 @@
 from wordle import Wordle
-from guesser import Guesser
+from guesser_general import Guesser
 import argparse
 import time
 import sys

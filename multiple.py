@@ -18,7 +18,7 @@ else:
 N_INIT, N_WORDS, N_GAMES = int(N_INIT), int(N_WORDS), 500
 
 # _word_list is loaded from the dev set.
-_word_list = yaml.load(open('dev_wordlist.yaml'), Loader=yaml.FullLoader)
+_word_list = yaml.load(open('data/dev_wordlist.yaml'), Loader=yaml.FullLoader)
 
 stats = np.zeros(shape=(N_INIT, 3))
 
@@ -30,7 +30,7 @@ for i in range(N_INIT):
         replace=False
     ).tolist()
    
-    with open('r_wordlist.yaml', 'w') as f:
+    with open('data/r_wordlist.yaml', 'w') as f:
         yaml.dump(word_list, f)
 
     # Run the game

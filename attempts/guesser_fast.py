@@ -107,7 +107,7 @@ class Guesser:
                 self.last_guess = dummy_guess
                 return dummy_guess
             
-            if len(candidates_to_consider) > 0: # heuristic / entropy choice
+            if len(candidates_to_consider) > 50: # heuristic / entropy choice
                 if self.use_frequency:
                     letter_counts = {}
                     for word in candidates_to_consider:
